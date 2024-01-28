@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,80 +12,119 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
     <title>User data</title>
     <style>
-        body {
-            background-color: #EDE7FA;
-            font-family: 'Times New Roman', Times, serif;
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
-        .container {
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        {% comment %} .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             text-align: center;
             padding: 20px;
+        } {% endcomment %}
+
+        {% comment %} .left-column {
+            max-width: 400px;
+            margin-right: 20px;
         }
 
-        .profile {
+        .left-column img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .right-column {
+            flex: 1;
+        } {% endcomment %}
+
+        {% comment %} .profile {
             background-color: rgba(237, 231, 250, 1);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            max-width: 400px;
+            margin: 0 auto; /* Center the content in the right column */
         }
 
         .profile img {
-            width: 220px;
+            width: 100%;
             border-radius: 50%;
             margin-bottom: 20px;
-        }
+        } {% endcomment %}
 
         .form-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            border: 2px solid #ccc;
+            height: 100%;
+            background-color: #EDE7FA;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            padding: 20px;
-            background-color: #fff;
+            overflow: hidden;
+            margin-top: 120px;  /* Adjust margin-top based on your navbar height */
         }
 
-        form {
-            width: 100%;
-            max-width: 400px;
+        .left-image {
+            width: 900px; /* Adjust the width as needed */
+            height: 100%;
+            background: url({% static "images/illustration.png" %}) center center no-repeat;
+            background-size: cover;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .b {
+            flex: 1;
         }
 
         label {
             font-size: 20px;
             color: black;
-            font-weight: bold;
+            font-weight: 500;
+
+
+
+            
+        }
+        .navbar-container {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 100;
         }
 
-        input[type="date"] {
+        input[type="date"],
+        input[type="text"],
+        input[type="submit"] {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px;
             width: 100%;
+            background-color: #D9D6F0;
+            box-sizing: border-box;
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #D9D6F0;
+            color: black;
             cursor: pointer;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            width: 100%;
             transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #BDADE0;
         }
 
         .chart-container {
@@ -99,77 +138,86 @@
             color: #555;
         }
     </style>
-  </head>
-  <body>
-    {% include 'dashboard/navbar.html' %}
+</head>
+<body>
+    <div class="navbar-container">
+        {% include 'dashboard/navbar.html' %}
+    </div>
 
-    <div class="container">
-        {% for member in members %}
-            {% if member.id == id %}
-                <div class="profile">
-                    <img src="{{ member.image.url }}" alt="{{ member.first_name }}">
-                    <h1>{{ member.first_name }}</h1>
-                    <p>Email: {{ member.email }}</p>
-                    <p>Gender: {{ member.gender }}</p>
-                    <p>Role: {{ member.status }}</p>
-                    <p>Year: {{ member.year }}</p>
-                </div>
-            {% endif %}
-        {% endfor %}
-
-        <div class="form-container">
-            <form method="post">
-                {% csrf_token %}
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date" name="start-date">
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date" name="end-date">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-
-        {% if dict %}
-            <div class="chart-container">
-                <p>Number of days on leave: {{ dict.n_days }} out of {{ dict.n_dayst }} days</p>
-                <canvas id="myChart" width="400" height="100"></canvas>
+   
+          
+        
+    <div class="form-container">
+        <div class="left-image"></div>
+        <div class="b">
+            <div class="overlay"></div>
+            <div class="b-content">
+                {% for member in members %}
+                    {% if member.id == id %}
+                        {% comment %} <img src="{{ member.image.url }}" alt="{{ member.first_name }}"> {% endcomment %}
+                        <h1>{{ member.first_name }}</h1>
+                        <p>Email: {{ member.email }}</p>
+                        <p>Gender: {{ member.gender }}</p>
+                        <p>Role: {{ member.status }}</p>
+                        <p>Year: {{ member.year }}</p>
+                    {% endif %}
+                {% endfor %}
             </div>
-            
-            <script>
-                $(document).ready(function(){
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['Days absent', 'Days present'],
-                            datasets: [{
-                                label: '# of users',
-                                data: ['{{ dict.n_days }}', '{{ dict.days_present }}'],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
+
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" name="start-date">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" name="end-date">
+                    <input type="submit" value="Submit">
+                </form>
+
+                {% if dict %}
+                    <div class="chart-container">
+                        <p>Number of days on leave: {{ dict.n_days }} out of {{ dict.n_dayst }} days</p>
+                        <canvas id="myChart" width="400" height="100"></canvas>
+                    </div>
+                    
+                    <script>
+                        $(document).ready(function(){
+                            var ctx = document.getElementById('myChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['Days absent', 'Days present'],
+                                    datasets: [{
+                                        label: '# of users',
+                                        data: ['{{ dict.n_days }}', '{{ dict.days_present }}'],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    });
-                });
-            </script>
-        {% else %}
-            <div class="no-records">
-                <p>No leave records found. <br> Please choose another range.</p>
+                            });
+                        });
+                    </script>
+                {% else %}
+                    <div class="no-records">
+                        <p>No leave records found. <br> Please choose another range.</p>
+                    </div>
+                {% endif %}
             </div>
-        {% endif %}
+        </div>
     </div>
   </body>
 </html>
