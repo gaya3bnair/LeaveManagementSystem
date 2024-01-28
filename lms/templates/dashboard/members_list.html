@@ -16,10 +16,12 @@
           display: flex;
           flex-direction: row;
           align-items: start;
+          margin-bottom: 100px;
       }
 
       .search-box {
-          margin-bottom: 20px;
+        width: 900px;
+          margin-bottom: 30px;
       }
 
       .our-team {
@@ -44,7 +46,7 @@
             <br/>
             <div class="boxes">
             <form>
-                <div class="form-group mx-sm-3 mb-2">
+                <div class="search-box">
                     <input name="search" type="text" class="form-control w-25" id="myInput" onkeyup="myFunction()" placeholder="Search by name">
                 </div>
             </form>
@@ -84,18 +86,15 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="our-team">
                             <div class="picture">
-                                <!-- You can use the member's image from detail.image -->
                                 <img class="img-fluid" src="{% static 'images/person1.jpeg' %}" alt="{{ detail.first_name }} Image">
                             </div>
                             <div class="team-content">
                               <h3 class="name"><a href="user/{{ detail.id }}" style="color: black; text-decoration: none;">{{ detail.first_name }}</a></h3>
                                 <h4 class="title">{{ detail.status }}</h4>
                             </div>
-                            <!-- Add the social links dynamically based on member's data -->
                             <ul class="social">
                                 <li><a href="{{ detail.facebook_url }}" class="fa fa-facebook" aria-hidden="true"></a></li>
                                 <li><a href="{{ detail.twitter_url }}" class="fa fa-twitter" aria-hidden="true"></a></li>
-                                <!-- Add more social links as needed -->
                             </ul>
                         </div>
                     </div>
