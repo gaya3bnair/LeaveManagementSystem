@@ -11,7 +11,8 @@ from django.contrib import messages
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
-
+def landing_page(request):
+    return render(request, 'dashboard/landingpage.html')
 def members_list(request):
     members = Members.objects.all()
     value = False

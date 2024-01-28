@@ -4,7 +4,8 @@ from django.contrib import admin
 from django.conf import *
 from django.conf.urls.static import static
 urlpatterns = [
-    path('', views.members_list, name='members'),
+    path('', views.landing_page, name='landingpage'),
+    path('lms', views.members_list, name='members'),
     path('leave', views.leave_request, name='requests'),
     path('user/<int:id>', views.user, name='user'),
     path('approve', views.approve, name='approve'),

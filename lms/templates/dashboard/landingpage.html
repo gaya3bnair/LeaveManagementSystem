@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ede7fa; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-half, .right-half {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .right-half {
+          
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            align-self: stretch;
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            height: 1000px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .leave-management-box {
+            weight:400px;
+ 
+            text-align: center;
+            background color:#d9d6f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left-half">
+        <img src="https://cdn.dribbble.com/userupload/10783193/file/original-dc414a4dad34abdabf6d8b5ad98ec146.jpg?resize=1200x900" alt="Landing Page Image">
+    </div>
+    
+    <!-- Right Half with Heading -->
+    <div class="right-half">
+        <div class="leave-management-box">
+            <h1>The Leave Management System</h1>
+            <p>Welcome to the Leave Management System. Streamline and simplify your leave requests with our efficient system. Manage your time off easily and focus on what matters most.</p>
+            <a href="lms/lms" class="enter-button">Enter</a>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
