@@ -1,0 +1,197 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(237, 231, 250, 1);
+    font-family: 'Open Sans', sans-serif; /* Apply Open Sans font to the entire body */
+}
+
+.logo {
+    display: inline-block;
+    padding: 10px 25px;
+}
+
+.logo span {
+    background-color: #181754;
+    font-size: 1em;
+    vertical-align: top;
+    color: #fff; /* Changed color to white for better contrast */
+}
+
+.logo:hover span {
+    background-color: #181754;
+}
+
+nav {
+    background-color: rgba(217, 214, 240, 1);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    font-size: larger;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+li:last-child {
+    margin-right: 0;
+}
+
+.grey {
+    font-size: 25px;
+    text-align: center;
+    padding: 20px 35px;
+    text-decoration: none;
+    border-radius: 18px;
+    color: #fff; /* Changed text color to white for better contrast */
+}
+
+li:not(.logo):hover .grey {
+    background-color: #181754;
+    color: rgb(75, 28, 140);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    margin-top: 0;
+    text-align: center;
+}
+
+nav a {
+    color: rgb(51, 19, 85);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: rgb(91, 26, 161);
+}
+
+/* Modal styles */
+.modal-content {
+    background-color: rgba(237, 231, 250, 1); /* Set background color of modal content to pink */
+    border: 2px solid rgba(237, 231, 250, 1); /* Add border with page color */
+    border-radius: 20px; /* Add border radius for a nice border */
+}
+
+.modal-header {
+    background-color: rgba(217, 214, 240, 1); /* Set background color of modal header to light purple */
+    border-bottom: 2px solid rgba(237, 231, 250, 1); /* Add border with page color */
+    border-radius: 20px 20px 0 0; /* Add border radius for a nice header */
+}
+
+.modal-body {
+    padding: 20px; /* Add padding for content inside the modal */
+}
+
+.modal-footer {
+    background-color: rgba(237, 231, 250, 1); /* Set background color of modal footer to pink */
+    border-top: 2px solid rgba(237, 231, 250, 1); /* Add border with page color */
+    border-radius: 0 0 20px 20px; /* Add border radius for a nice footer */
+}
+
+.modal-body p {
+    color: #000; /* Set text color of paragraphs within modal body */
+}
+
+/* Button styles within modal footer */
+.modal-footer button.btn-success {
+    color:#181754;
+    background-color: rgba(219, 204, 251, 1); /* Set background color of "Approve" button */
+    border-color: rgb(212, 193, 252); /* Set border color of "Approve" button */
+}
+
+.modal-footer button.btn-danger {
+    color:#181754;
+    background-color: rgba(219, 204, 251, 1); /* Set background color of "Reject" button */
+    border-color:rgba(219, 204, 251, 1); /* Set border color of "Reject" button */
+}
+
+.modal-footer button.btn-success:hover,
+.modal-footer button.btn-danger:hover {
+    color:#fff;
+    background-color: #60215f; /* Change background color of buttons on hover */
+    border-color: #183c21; /* Change border color of buttons on hover */
+}
+
+/* View request button color */
+.modal-body .btn-primary {
+    background-color: rgba(217, 214, 240, 1); /* Set background color of "View request" button to light purple */
+    color: #fff; /* Set text color of "View request" button to white */
+    border: none; /* Remove button border */
+    border-radius: 10px; /* Add border radius for a nice button */
+    padding: 10px 20px; /* Adjust padding for the button */
+}
+
+.modal-body .btn-primary:hover {
+    background-color: rgba(197, 184, 227, 1); /* Change background color of "View request" button on hover */
+}
+
+.container {
+    /* Existing container styles */
+    background-color: #fff;
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    width: 9000px; /* Set maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    /* Use the same background color as the body */
+    color: rgb(51, 19, 85); /* Set text color of table content */
+    border-collapse: collapse; /* Collapse border spacing */
+}
+
+.table th,
+.table td {
+    padding: 15px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+    font-size: 18px; /* Set font size for table cells */
+}
+
+.table th {
+    color: rgb(51, 19, 85); /* Set text color of table header */
+}
+
+.table tbody tr {
+    background-color: rgba(237, 231, 250, 1);
+    border-radius: 10px;
+    padding-bottom: 20px; /* Add distance between rows */
+}
+
+.table tbody tr td:first-child {
+    border-top-left-radius: 10px; /* Round top-left corner of first cell in each row */
+    border-bottom-left-radius: 10px; /* Round bottom-left corner of first cell in each row */
+}
+
+.table tbody tr td:last-child {
+    border-top-right-radius: 10px; /* Round top-right corner of last cell in each row */
+    border-bottom-right-radius: 10px; /* Round bottom-right corner of last cell in each row */
+}
+
+/* Pink color button */
+.bs-example .btn-primary {
+    background-color: rgba(234, 170, 235, 1);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+/* Hover color for pink button */
+.bs-example .btn-primary:hover {
+    background-color: rgba(214, 150, 215, 1);
+}
