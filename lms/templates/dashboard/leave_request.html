@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Leave Management Form</title>
+
+    <style>
+      nav {
+        background-color: rgba(217, 214, 240, 1);
+          }
+      .logo {
+          display: inline-block;
+          padding: 10px 25px;
+      }
+
+      .logo span {
+          background-color: #181754;
+          font-size: 1em;
+          vertical-align: top;
+          color: #fff;
+      }
+
+      .logo:hover span {
+          background-color: #181754;
+      }
+
+      nav {
+          background-color: rgba(217, 214, 240, 1);
+      }
+
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+      }
+
+      li {
+          font-size: larger;
+          display: inline-block;
+          padding: 10px 20px;
+          margin-right: 10px;
+      }
+
+      li:last-child {
+          margin-right: 0;
+      }
+
+      .grey {
+          font-size: 25px;
+          text-align: center;
+          padding: 20px 35px;
+          text-decoration: none;
+          border-radius: 18px;
+          color: #fff;
+      }
+
+      li:not(.logo):hover .grey {
+          background-color: #181754;
+          color: rgb(75, 28, 140);
+          transition: background-color 0.3s, color 0.3s;
+      }
+
+      h2 {
+          font-family: 'Merriweather', serif;
+          margin-top: 0;
+          text-align: center;
+      }
+
+      nav a {
+          color: rgb(51, 19, 85);
+          text-decoration: none;
+      }
+
+      nav a:hover {
+          color: rgb(91, 26, 161);
+      }
+
+      .c{
+        font-family: 'Times New Roman', sans-serif;
+        font-weight: bold;
+        filter: brightness(80%);
+        
+      }
+      .a {
+        height: 250px;
+        padding-top: 90px;
+        text-align: center;
+        margin-bottom: 0;
+        font-weight: bold;
+      }
+      .container {
+        display: flex; /* Enables side-by-side elements */
+      }
+
+      .left-image {
+        width: 1300px; /* Set the width */
+        height: 800px; /* Set the height */
+        margin-left: -350px;
+        margin-right: 20px; /* Creates space between image and text */
+        background: url("https://cdn.dribbble.com/userupload/10783193/file/original-dc414a4dad34abdabf6d8b5ad98ec146.jpg?resize=1200x900") center/cover no-repeat;
+      }
+
+      .b {
+        height: 1000px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    left: 1500px; /* Adjust the left position as needed */
+    top: 400px; /* Adjust the top position as needed */
+        flex: 1;
+      }
+
+      .c::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 140%;
+        background-color: rgba(160, 119, 182, 0.323); /* Black overlay with 50% opacity */
+        z-index: -2; /* Ensure the overlay is above the background image */
+      }
+      
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* Spacing between elements */
+        margin-left: 20px; /* Add any additional margin as needed */
+        padding: 20px; /* Add padding to create space between the content and the border */
+        border: 2px solid #ccc; /* Set the border style, color, and width */
+        border-radius: 10px; /* Add rounded corners if desired */
+        /* Example: */
+      }
+
+      /* Input field styling */
+      input[type="date"],
+      input[type="text"],
+      input[type="submit"] {
+        /* Example: */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 20px;
+      }
+
+      /* Submit button styling */
+      input[type="submit"] {
+        /* Example: */
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+      }
+  </style>
+    
+
+  </head>
+  <body class="c">
+    <nav>
+      <ul>
+          <li class="logo"><a href="members_list.html"><img src="..\static\images\Logo.png" style="height: 85px; width: 200px;"></a></li>
+          <li class="grey"><a href="#">Leave Request</a></li>
+          <li class="grey"><a href="#">Approval</a></li>
+          <li class="grey"><a href="user.html">User</a></li>
+      </ul>
+  </nav>
+    
+    <h1 class="a">Leave Management Form</h1>
+    {% include 'dashboard/messages.html' %}
+
+    
+    <div class="container">
+      <div class="left-image">
+
+      </div>
+    <div class="b">
+      <div class="overlay"></div>
+        <div class="b-content">
+      <form method="post">
+        {% csrf_token %}
+        
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start-date"></br>
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date"></br>
+        <label for="reason">Reason:</label>
+        <input type="text" id="reason" name="reason"></br>
+        <input  type="submit" value="Submit">
+        </div>
+      </form>
+  </div>
+</div>
+</body>
+</html> 
