@@ -12,167 +12,129 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
     <title>User data</title>
     <style>
-        body{
+        body {
             background-color: #EDE7FA;
-            font-family:'Times New Roman', Times, serif;
-            
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .a{
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-align: center;
-            font-size: 20px;
+            padding: 20px;
+        }
+
+        .profile {
             background-color: rgba(237, 231, 250, 1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .b{
-            padding-top: 10px;
-            padding-left: 1s0px;
-            font-size: 18px;
-            font-weight: "bold";
+        .profile img {
+            width: 220px;
+            border-radius: 50%;
+            margin-bottom: 20px;
         }
 
-        .d{
-            text-align: center;
-            font-size: 20px;
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
         }
 
         form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px; /* Spacing between elements */
-        border: 2px solid #ccc; /* Set the border style, color, and width */
-        border-radius: 10px; /* Add rounded corners if desired */
-        /* Example: */
-      }
-
-      /* Input field styling */
-      input[type="date"],
-      input[type="text"],
-      input[type="submit"] {
-        /* Example: */
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 20px;
-      }
-
-      /* Submit button styling */
-      input[type="submit"] {
-        /* Example: */
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-      }
-
-        nav {
-            background-color: rgba(217, 214, 240, 1);
-        }
-        .logo {
-            display: inline-block;
-            padding: 10px 25px;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .logo span {
-            background-color: #181754;
-            font-size: 1em;
-            vertical-align: top;
-            color: #fff;
+        label {
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
         }
 
-        .logo:hover span {
-            background-color: #181754;
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
         }
 
-        nav {
-            background-color: rgba(217, 214, 240, 1);
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s;
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
 
-        li {
-            font-size: larger;
-            display: inline-block;
-            padding: 10px 20px;
-            margin-right: 10px;
-        }
-
-        li:last-child {
-            margin-right: 0;
-        }
-
-        .grey {
-            font-size: 25px;
+        .chart-container {
             text-align: center;
-            padding: 20px 35px;
-            text-decoration: none;
-            border-radius: 18px;
-            color: #fff;
+            margin-top: 20px;
         }
 
-        li:not(.logo):hover .grey {
-            background-color: #181754;
-            color: rgb(75, 28, 140);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        h2 {
-            font-family: 'Merriweather', serif;
-            margin-top: 0;
+        .no-records {
             text-align: center;
-        }
-
-        nav a {
-            color: rgb(51, 19, 85);
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: rgb(91, 26, 161);
+            margin-top: 20px;
+            color: #555;
         }
     </style>
   </head>
   <body>
-    <nav>
-            <ul>
-                <li class="logo"><a href="members_list.html"><img src="..\static\images\Logo.png" style="height: 85px; width: 200px;"></a></li>
-                <li class="grey"><a href="#">Leave Request</a></li>
-                <li class="grey"><a href="#">Approval</a></li>
-                <li class="grey"><a href="user.html">User</a></li>
-            </ul>
-        </nav>
-      <div class="a">
+    {% include 'dashboard/navbar.html' %}
+
+    <div class="container">
         {% for member in members %}
             {% if member.id == id %}
-                <img src="{{ member.image.url }}" width="220" alt="">
-                <br><br><br>
-                <h1>{{ member.first_name }}</h1>
-                <p>Email: {{ member.email }}</p>
-                <p>Gender: {{ member.gender }}</p>
-                <p>Role: {{ member.status }}</p>
-                <p>Year: {{ member.year }}</p><br>
+                <div class="profile">
+                    <img src="{{ member.image.url }}" alt="{{ member.first_name }}">
+                    <h1>{{ member.first_name }}</h1>
+                    <p>Email: {{ member.email }}</p>
+                    <p>Gender: {{ member.gender }}</p>
+                    <p>Role: {{ member.status }}</p>
+                    <p>Year: {{ member.year }}</p>
+                </div>
             {% endif %}
         {% endfor %}
-    </div>
-    
-    <div class="b">
-        <form method="post">
-            {% csrf_token %}
-            <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" name="start-date"><br>
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" name="end-date"><br>
-            <input type="submit" value="Submit">
-        </form><br><br>
-    
+
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
         {% if dict %}
-            <p>Number of days on leave: {{ dict.n_days }} out of {{ dict.n_dayst }} days</p>
+            <div class="chart-container">
+                <p>Number of days on leave: {{ dict.n_days }} out of {{ dict.n_dayst }} days</p>
+                <canvas id="myChart" width="400" height="100"></canvas>
+            </div>
+            
             <script>
-                // jQuery function
                 $(document).ready(function(){
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
@@ -203,17 +165,11 @@
                     });
                 });
             </script>
-            
-            <canvas id="myChart" width="400" height="100"></canvas>  
-            
-            <div class="d">
-                <!-- Content for the "d" class if records are found -->
-            </div>
-        
         {% else %}
-            <div class="d">
+            <div class="no-records">
                 <p>No leave records found. <br> Please choose another range.</p>
             </div>
         {% endif %}
     </div>
-    
+  </body>
+</html>
