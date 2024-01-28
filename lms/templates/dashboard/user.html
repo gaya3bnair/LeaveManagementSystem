@@ -70,6 +70,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
+            margin: 0 auto; 
+            box-sizing: border-box;
             margin-top: 120px;  /* Adjust margin-top based on your navbar height */
         }
 
@@ -84,15 +86,15 @@
 
         .b {
             flex: 1;
+            text-align: center;
+            margin-bottom:10px;
         }
 
         label {
             font-size: 20px;
             color: black;
             font-weight: 500;
-
-
-
+            text-align: left;
             
         }
         .navbar-container {
@@ -154,7 +156,7 @@
             <div class="b-content">
                 {% for member in members %}
                     {% if member.id == id %}
-                        {% comment %} <img src="{{ member.image.url }}" alt="{{ member.first_name }}"> {% endcomment %}
+                        <img src="{% static "images/person1.png" %}" alt="{{ member.first_name }}"> 
                         <h1>{{ member.first_name }}</h1>
                         <p>Email: {{ member.email }}</p>
                         <p>Gender: {{ member.gender }}</p>
@@ -212,9 +214,9 @@
                         });
                     </script>
                 {% else %}
-                    <div class="no-records">
+                    {% comment %} <div class="no-records">
                         <p>No leave records found. <br> Please choose another range.</p>
-                    </div>
+                    </div> {% endcomment %}
                 {% endif %}
             </div>
         </div>

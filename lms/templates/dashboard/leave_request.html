@@ -70,17 +70,14 @@
             font-size: 20px;
             color: black;
             font-weight: 500;
-
-
-
-            
+     
         }
-        
+
 
         input[type="date"],
         input[type="text"],
         input[type="submit"] {
-            padding: 10px;
+            padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 18px;
@@ -108,7 +105,11 @@
 
     {% include 'dashboard/messages.html' %}
 
-    
+    <div class="form-container">
+        <div class="left-image"></div>
+        <div class="b">
+            <div class="overlay"></div>
+            <div class="b-content">
                 
                 <form method="post">
                   <h2>Apply for Leave</h2>
