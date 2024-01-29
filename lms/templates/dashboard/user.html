@@ -31,17 +31,19 @@
         .form-container {
             display: flex;
             height: 100%;
+            width: 100%;
             background-color: #EDE7FA;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
             margin: 0 auto; 
+            justify-content: center;
             box-sizing: border-box;
             margin-top: 120px;  /* Adjust margin-top based on your navbar height */
         }
 
         .left-image {
-            width: 900px; /* Adjust the width as needed */
+            width: 1100px; /* Adjust the width as needed */
             height: 100%;
             background: url({% static "images/illustration.png" %}) center center no-repeat;
             background-size: cover;
@@ -74,13 +76,15 @@
         input[type="date"],
         input[type="text"],
         input[type="submit"] {
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 18px;
-            width: 100%;
+            width: 500px;
             background-color: #D9D6F0;
             box-sizing: border-box;
+            padding-left: 20px;
+            align-items: center;
         }
 
         input[type="submit"] {
@@ -92,6 +96,17 @@
 
         input[type="submit"]:hover {
             background-color: #BDADE0;
+        }
+
+        .chart-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .no-records {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
         }
 
         .chart-container {
@@ -223,10 +238,15 @@
                 <form method="post">
                     {% csrf_token %}
                     <label for="start-date">Start Date:</label>
+                    <br>
                     <input type="date" id="start-date" name="start-date">
+                    <br>
                     <label for="end-date">End Date:</label>
+                    <br>
                     <input type="date" id="end-date" name="end-date">
+                    <br>
                     <input type="submit" value="Submit">
+                    <br>
                 </form>
 
                 {% if dict %}

@@ -10,6 +10,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="..\static\css\approve.css">
     <title>Approve requests</title>
+    <style>
+        .custom-view-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            text-align: center;
+            text-color:black;
+            background-color: #D9D6F0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+          
+        }
+        .custom-view-button:hover {
+            background-color: #BDADE0;
+        }
+        table {
+            background-color: #BDADE0; /* Set your desired background color */
+        }
+    </style>
     <script>
         $(document).ready(function(){
             function alignModal(){
@@ -58,7 +77,7 @@
                         <td>{{request.status}}</td>
                         <div class="bs-example">
                             <div class="bs-example">
-                                <td><a href="#myModal{{request.id}}" class="btn btn-primary" data-toggle="modal">View</a></td>
+                                <td><a href="#myModal{{request.id}}" class="btn custom-view-button" data-toggle="modal">View</a></td>
                                 </div>                            
                         <!-- Modal HTML -->
                             
