@@ -26,42 +26,7 @@
             background-color: #f0f0f0;
         }
 
-        {% comment %} .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        } {% endcomment %}
-
-        {% comment %} .left-column {
-            max-width: 400px;
-            margin-right: 20px;
-        }
-
-        .left-column img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .right-column {
-            flex: 1;
-        } {% endcomment %}
-
-        {% comment %} .profile {
-            background-color: rgba(237, 231, 250, 1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            max-width: 400px;
-            margin: 0 auto; /* Center the content in the right column */
-        }
-
-        .profile img {
-            width: 100%;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        } {% endcomment %}
+      
 
         .form-container {
             display: flex;
@@ -139,11 +104,99 @@
             margin-top: 20px;
             color: #555;
         }
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+        
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(237, 231, 250, 1);
+            font-family: 'Open Sans', sans-serif; /* Apply Open Sans font to the entire body */
+        }
+        
+        .logo {
+            display: inline-block;
+            padding: 10px 25px;
+        }
+        
+        .logo span {
+            background-color: #181754;
+            font-size: 1em;
+            vertical-align: top;
+            color: #fff; /* Changed color to white for better contrast */
+        }
+        
+        .logo:hover span {
+            background-color: #181754;
+        }
+        
+        nav {
+            background-color: rgba(217, 214, 240, 1);
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        li {
+            font-size: larger;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+        
+        li:last-child {
+            margin-right: 0;
+        }
+        
+        .grey {
+            font-size: 25px;
+            text-align: center;
+            padding: 20px 35px;
+            text-decoration: none;
+            border-radius: 18px;
+            color: #fff; /* Changed text color to white for better contrast */
+        }
+        
+        li:not(.logo):hover .grey {
+            background-color: #181754;
+            color: rgb(75, 28, 140);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h2 {
+            font-family: 'Merriweather', serif;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        nav a {
+            color: rgb(51, 19, 85);
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            color: rgb(91, 26, 161);
+        }
+        
+      
+       
     </style>
 </head>
 <body>
     <div class="navbar-container">
-        {% include 'dashboard/navbar.html' %}
+        <nav>
+            <ul>
+                <li class="logo"><a href="/ "><img src="{% static "images/Logo.png" %}" style="height: 85px; width: 200px;"></a></li>
+                <li class="grey"><a href="leave">Leave Request</a></li>
+                <li class="grey"><a href="approve">Approval</a></li>
+                <li class="grey"><a href="lms">User</a></li>
+            </ul>
+        </nav>
     </div>
 
    
