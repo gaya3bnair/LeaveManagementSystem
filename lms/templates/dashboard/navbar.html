@@ -47,6 +47,7 @@
     
     li:last-child {
         margin-right: 0;
+        margin-left: auto;
     }
     
     .grey {
@@ -79,21 +80,33 @@
         color: rgb(91, 26, 161);
     }
     
-  
-   
-    
-   
-  
-    
-  
-    
+    /* Added styles for aligning welcome message to the right */
+    .welcome-message {
+        margin-left: auto;
+    }
 </style>
 
 <nav>
     <ul>
-        <li class="logo"><a href="/ "><img src="..\static\images\Logo.png" style="height: 85px; width: 200px;"></a></li>
+        <li class="logo"><a href="/"><img src="..\static\images\Logo.png" style="height: 85px; width: 200px;"></a></li>
         <li class="grey"><a href="leave">Leave Request</a></li>
         <li class="grey"><a href="approve">Approval</a></li>
         <li class="grey"><a href="lms">User</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li> <li></li>
+        <li class="welcome-message">
+            {% if user.is_authenticated %}
+                <p class="info">Welcome {{ user.username }}</p>
+            {% else %}
+                <p>You are not logged in.</p>
+            {% endif %}
+        </li>
     </ul>
 </nav>
