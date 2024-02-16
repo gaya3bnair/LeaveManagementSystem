@@ -54,9 +54,9 @@ def leave_request(request):
             start_year, start_month, start_day = start_date.split('-')
             end_year, end_month, end_day = end_date.split('-')
             valid = False
-            if end_year > start_year or (end_year == start_year and end_month > start_month):
+            if end_year > start_year or (end_year == start_year and end_month > start_month and end_day-start_day <= 20):
                 valid = True
-            elif end_year == start_year and end_month == start_month and end_day >= start_day:
+            elif end_year == start_year and end_month == start_month and end_day >= start_day and end_day-start_day <= 20:
                 valid = True
             else:
                 valid = False
