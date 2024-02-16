@@ -34,9 +34,13 @@ def members_list(request):
 #     user = request.user
 #     context = {'user': user}
 #     return render(request, 'my_template.html', context)
-
+def calculate_days(start_date, end_date):
+    start_datetime = datetime.strptime(start_date, '%Y-%m-%d')
+    end_datetime = datetime.strptime(end_date, '%Y-%m-%d')
+    return (end_datetime - start_datetime).days
 
 def leave_request(request):
+
     if request.method == 'POST':
         start_date = request.POST.get('start-date')
         end_date = request.POST.get('end-date')
@@ -49,15 +53,18 @@ def leave_request(request):
         maillist = email.split(", ")
         msg = EmailMultiAlternatives(
             'Leave request', f'Start Date: {start_date}\nEnd Date: {end_date}\nReason: {reason}', EMAIL_HOST_USER, maillist)
+        
 
         try:
             start_year, start_month, start_day = start_date.split('-')
             end_year, end_month, end_day = end_date.split('-')
             valid = False
-            if end_year > start_year or (end_year == start_year and end_month > start_month and end_day-start_day <= 20):
-                valid = True
-            elif end_year == start_year and end_month == start_month and end_day >= start_day and end_day-start_day <= 20:
-                valid = True
+            days_difference = calculate_days(start_date, end_date)
+            if days_difference <= 7:
+                if end_year > start_year or (end_year == start_year and end_month > start_month):
+                    valid = True
+                elif end_year == start_year and end_month == start_month and end_day >= start_day:
+                    valid = True
             else:
                 valid = False
             if valid:
@@ -69,8 +76,7 @@ def leave_request(request):
                     for members in mem:
                         username = members.username
                         if username == request.user.username:
-                            # members.req_sent = True
-                            # members.save(update_fields=['req_sent'])
+                         
                             leave_req = Leave(
                                 start_date=start_date, end_date=end_date, reason=reason, user_id=members.user_id)
                             leave_req.save()
@@ -152,12 +158,7 @@ def approve(request):
                         dict[mentee_name] = req.user_id
     print(dict)
 
-    # status = request.POST.get('status')
-    # req_id = request.POST.get('request_id')
-
-    # print(req_id)
-
-    # req = requests.objects.get(id=id)
+   
     if request.method == 'POST':
         print(request.POST.keys())
         reqe = requests.get(id=request.POST.get('request_id'))
